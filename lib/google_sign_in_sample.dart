@@ -6,18 +6,22 @@ import 'dart:async';
 import 'dart:ui' show ImageFilter;
 
 class GoogleSignInSample extends StatelessWidget {
-  Future<bool> _loginUser() async {
+  Future<FirebaseAPI> _loginUser() async {
     final api = await FirebaseAPI.signInWithGoogle();
     if (api != null) {
-      return true;
+      return api;
     } else {
-      return false;
+      return null;
     }
+
   }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Sign in"),
@@ -42,16 +46,17 @@ class GoogleSignInSample extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Text("login"),
-                      FlatButton(onPressed: () async {
-                        bool signedIn = await _loginUser();
+                      FlatButton(
+                          onPressed: () async {
+                            FirebaseAPI signedIn = await _loginUser();
 
-                        if (signedIn) {
-                          print("Success");
-                        } else {
-                          print("fail");
-                        }
-                      }, child: Text("Sign in"))
+                            if (signedIn != null) {
+                              showInSnackBar("Signed in as ${signedIn.user.displayName}");
+                            } else {
+                              print("fail");
+                            }
+                          },
+                          child: Text("Sign in"))
                     ],
                   ),
                 ),
@@ -61,5 +66,15 @@ class GoogleSignInSample extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showInSnackBar(String value) {
+    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: Text(value),
+      action: SnackBarAction(label: 'Log out', onPressed: () {
+        FirebaseAPI.signOut();
+      }),
+      duration: Duration(days: 1),
+    ));
   }
 }

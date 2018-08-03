@@ -13,6 +13,10 @@ class FirebaseAPI {
     this.user = user;
   }
 
+  static signOut() async {
+    await _auth.signOut();
+  }
+
   static Future<FirebaseAPI> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _signIn.signIn();
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
