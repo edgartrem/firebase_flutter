@@ -1,6 +1,9 @@
 # firebase_sample
 
-A new Flutter application.
+A Simple App showcasing
+- Firebase real time Database
+- Firestore
+- Google sign-in
 
 ## Getting Started
 
