@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "583185148223",
+    "firebase_url": "https://databasetest-3b939.firebaseio.com",
+    "project_id": "databasetest-3b939",
+    "storage_bucket": "databasetest-3b939.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583185148223:android:4ce846793000045e",
+        "android_client_info": {
+          "package_name": "com.byneapp.firebasesample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583185148223-hhki8pjeusgrfubetm7r9222ek7fd32i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOxdkjGoCS9mXJJ4mwc8IBDC2w0SANQZ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
